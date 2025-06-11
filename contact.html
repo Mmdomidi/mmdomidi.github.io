@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request an Organizational Email</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/Vazirmatn-font-face.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Request an Organizational Email</h1>
+        <p>To receive an organizational email with the custom domain @mohammad-omidi.ir, please enter your contact information below.</p>
+        
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label for="email" class="form-label">Current Email Address</label>
+                <input type="email" id="email" name="email" class="form-input" required
+                    placeholder="example@company.com" dir="ltr">
+            </div>
+            <button type="submit" class="submit-btn">
+                <span>Submit Request</span>
+                <i class="fas fa-check"></i>
+            </button>
+        </form>
+
+        <div id="message" class="message" style="display: none;"></div>
+    </div>
+
+    <div id="loadingModal" class="modal">
+        <div class="modal-content">
+            <div class="loading-spinner"></div>
+            <p>Processing your request...</p>
+        </div>
+    </div>
+
+    <script src="contact.js"></script>
+</body>
+</html>
