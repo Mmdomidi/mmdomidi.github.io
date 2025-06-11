@@ -3,6 +3,46 @@ const emailForm = document.getElementById('emailForm');
 const emailInput = document.getElementById('email');
 const messageDiv = document.getElementById('message');
 
+// Login functionality
+const loginBtn = document.getElementById('loginBtn');
+const loginModal = document.getElementById('loginModal');
+const closeModal = document.querySelector('.close-modal');
+const loginForm = document.getElementById('loginForm');
+
+// Header scroll effect
+const header = document.querySelector('.main-header');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+    
+    lastScroll = currentScroll;
+});
+
+// Smooth scroll for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const headerOffset = 80;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
 function showLoadingModal() {
   modal.classList.add('show');
   document.body.style.overflow = 'hidden'; // Prevent scrolling
@@ -67,3 +107,33 @@ async function handleSubmit(event) {
 
 // Add form submit event listener
 emailForm.addEventListener('submit', handleSubmit);
+
+// Show modal when login button is clicked
+loginBtn.addEventListener('click', () => {
+    loginModal.style.display = 'flex';
+});
+
+// Close modal when close button is clicked
+closeModal.addEventListener('click', () => {
+    loginModal.style.display = 'none';
+});
+
+// Close modal when clicking outside
+loginModal.addEventListener('click', (e) => {
+    if (e.target === loginModal) {
+        loginModal.style.display = 'none';
+    }
+});
+
+// Handle login form submission
+loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value;
+    
+    // Here you can add your login logic
+    console.log('Login attempt with email:', email);
+    
+    // For now, just close the modal
+    loginModal.style.display = 'none';
+    loginForm.reset();
+});
