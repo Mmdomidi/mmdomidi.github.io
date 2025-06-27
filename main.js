@@ -137,3 +137,20 @@ loginForm.addEventListener('submit', (e) => {
     loginModal.style.display = 'none';
     loginForm.reset();
 });
+
+function scrollToEmailForm() {
+    const emailFormSection = document.getElementById('emailFormSection');
+    if (emailFormSection) {
+        emailFormSection.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+        });
+        // Focus on the email input after scrolling
+        setTimeout(() => {
+            const emailInput = document.getElementById('email');
+            if (emailInput) {
+                emailInput.focus();
+            }
+        }, 1000);
+    }
+}
