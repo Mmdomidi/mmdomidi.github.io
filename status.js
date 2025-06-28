@@ -19,7 +19,7 @@ function showMessage(status, email) {
     case 'available':
       message = `
         <div class="status-icon success">✓</div>
-        <h2>Email ${email}@mohammad-omidi.ir is available</h2>
+        <h2>Email ${email}@mohammadi.com is available</h2>
         <p>You can reserve this email address.</p>
         <div class="action-buttons">
           <button onclick="reserveEmail('${email}')" class="cta-button">Reserve</button>
@@ -31,7 +31,7 @@ function showMessage(status, email) {
     case 'taken':
       message = `
         <div class="status-icon error">✕</div>
-        <h2>Email ${email}@mohammad-omidi.ir has already been reserved</h2>
+        <h2>Email ${email}@mohammadi.com has already been reserved</h2>
         <p>Please try a different name.</p>
         <button onclick="goHome()" class="cta-button">Try Again</button>
       `;
@@ -40,7 +40,7 @@ function showMessage(status, email) {
     case 'pending':
       message = `
         <div class="status-icon pending">⏳</div>
-        <h2>Email ${email}@mohammad-omidi.ir is under review</h2>
+        <h2>Email ${email}@mohammadi.com is under review</h2>
         <p>Please wait...</p>
         <button onclick="goHome()" class="secondary-button">Back</button>
       `;
@@ -49,7 +49,7 @@ function showMessage(status, email) {
     case 'reserved':
       message = `
         <div class="status-icon success">✓</div>
-        <h2>Email ${email}@mohammad-omidi.ir has been successfully reserved</h2>
+        <h2>Email ${email}@mohammadi.com has been successfully reserved</h2>
         <p>Please complete your information.</p>
         <a href="contact.html?name=${encodeURIComponent(email)}" class="cta-button">Complete Info</a>
       `;
@@ -58,7 +58,7 @@ function showMessage(status, email) {
     default:
       message = `
         <div class="status-icon error">✕</div>
-        <h2>Email ${email}@mohammad-omidi.ir has already been reserved</h2>
+        <h2>Email ${email}@mohammdi.com has already been reserved</h2>
         <p>Please try a different name.</p>
         <button onclick="goHome()" class="cta-button">Try Again</button>
       `;
