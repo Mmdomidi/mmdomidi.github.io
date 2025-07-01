@@ -62,7 +62,7 @@ async function handleSubmit(event) {
     formData.append('name', name);
     formData.append('email', email);
 
-    const response = await fetch('https://aland-learning.darkube.app/webhook-test/email', {
+    const response = await fetch('https://aland-learning.darkube.app/webhook/email', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',

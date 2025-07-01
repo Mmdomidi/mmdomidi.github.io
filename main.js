@@ -78,7 +78,7 @@ async function handleSubmit(event) {
   try {
     showLoadingModal();
 
-    const response = await fetch("https://aland-learning.darkube.app/webhook-test/check-email", {
+    const response = await fetch("https://aland-learning.darkube.app/webhook/check-email", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
