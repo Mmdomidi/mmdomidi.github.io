@@ -76,7 +76,7 @@ async function handleSubmit(event) {
 
     const responseText = await response.text();
     console.log('Raw response:', responseText);
-// jhdhfdjsfhjs
+
     let data;
     try {
       data = JSON.parse(responseText);
