@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Your Custom Email Address</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/Vazirmatn-font-face.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="contact.css" media="print" onload="this.media='all'">
+    <noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/Vazirmatn-font-face.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="contact.css">
+    </noscript>
+</head>
+<body>
+    <div class="container">
+        <h1>Get Your Custom Email Address</h1>
+        <p>You have reserved your personal email address with the @mohammadi.com domain. To start your free 3-month trial and stay in touch with us, please enter your current email address:</p>
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label for="email" class="form-label">Your current email address</label>
+                <input type="email" id="email" name="email" class="form-input" required
+                    placeholder="your.email@example.com" dir="ltr">
+            </div>
+            <button type="submit" class="submit-btn">
+                <span>Start Free Trial</span>
+                <i class="fas fa-check"></i>
+            </button>
+        </form>
+
+        <div id="message" class="message" style="display: none;"></div>
+    </div>
+
+    <div id="loadingModal" class="modal">
+        <div class="modal-content">
+            <div class="loading-spinner"></div>
+            <p>Processing your request...</p>
+        </div>
+    </div>
+
+    <script src="contact.js" defer></script>
+</body>
+</html>

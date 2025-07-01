@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal professional email with @mohammadi.com - a simple and elegant solution for your digital identity.">
+  <meta name="keywords" content="custom email, mohammadi.com, professional email, personal email, email address">
+  <title>Professional Email Address | mohammadi.com</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/Vazirmatn-font-face.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="index.css" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/Vazirmatn-font-face.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+  </noscript>
+</head>
+<body>
+  <header class="main-header">
+    <div class="container">
+      <div class="header-content">
+        <nav class="main-nav">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="#hero" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="#subscription" class="nav-link">Subscription</a>
+            </li>
+            <li class="nav-item">
+              <a href="#advantages" class="nav-link">Advantages</a>
+            </li>
+            <li class="nav-item">
+              <a href="#footer" class="nav-link">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Login to Your Account</h2>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="loginEmail">Enter your email</label>
+          <input type="email" id="loginEmail" required placeholder="example@email.com">
+        </div>
+        <button type="submit" class="submit-btn">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="hero" id="hero">
+    <div class="hero-particles"></div>
+    <div class="container">
+      <div class="hero-content">
+        <h1>Your Professional Email Address</h1>
+        <p>Get your personal email with @mohammadi.com</p>
+        <div class="email-form" id="emailFormSection">
+          <form id="emailForm" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+              <label for="email" class="form-label">Choose your email username</label>
+              <div class="input-group">
+                <input type="text" id="email" name="email" class="form-input" required placeholder="e.g., ali">
+                <div class="input-icon">
+                  <i class="fas fa-user"></i>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="submit-btn">
+              <span>Check @mohammadi.com</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </form>
+          <div id="message" class="message" style="display: none;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="features" id="advantages">
+    <div class="section-header">
+      <h2>Why choose @mohammadi.com?</h2>
+      <p>Everything you need for a professional email</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-user-tie"></i>
+        </div>
+        <h3 class="feature-title">Professional Identity</h3>
+        <p class="feature-description">Look professional with yourname@mohammadi.com</p>
+        <div class="feature-hover">
+          <ul>
+            <li>Boost your business presence</li>
+            <li>Stand out from others</li>
+            <li>Greater professional credibility</li>
+          </ul>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3 class="feature-title">Advanced Security</h3>
+        <p class="feature-description">Your emails are protected with enterprise-grade security</p>
+        <div class="feature-hover">
+          <ul>
+            <li>Spam protection</li>
+            <li>Secure backups</li>
+            <li>Inbox protection</li>
+          </ul>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <h3 class="feature-title">Easy Access</h3>
+        <p class="feature-description">Access your email anytime, anywhere</p>
+        <div class="feature-hover">
+          <ul>
+            <li>No app installation needed</li>
+            <li>Accessible on any device</li>
+            <li>Automatic sync</li>
+          </ul>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-gift"></i>
+        </div>
+        <h3 class="feature-title">Free Start</h3>
+        <p class="feature-description">3 months free with full features</p>
+        <div class="feature-hover">
+          <ul>
+            <li>All features included</li>
+            <li>Cancel anytime</li>
+            <li>Full support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="testimonials" id="subscription">
+    <div class="section-header">
+      <h2>Start Free, Stay Affordable</h2>
+      <p>3 months free, then only $2.99/month</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card featured">
+        <div class="testimonial-avatar">
+          <i class="fas fa-crown"></i>
+        </div>
+        <h3 class="plan-title">3-Month Trial</h3>
+        <p class="plan-price">Free</p>
+        <div class="plan-features">
+          <ul>
+            <li><i class="fas fa-check"></i> Try yourname@mohammadi.com for free</li>
+            <li><i class="fas fa-check"></i> Full access via Gmail</li>
+          </ul>
+        </div>
+        <button class="cta-button" onclick="scrollToEmailForm()">Start Free Trial</button>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-avatar">
+          <i class="fas fa-rocket"></i>
+        </div>
+        <h3 class="plan-title">After Trial</h3>
+        <p class="plan-price">$2.99<span>/month</span></p>
+        <div class="plan-features">
+          <ul>
+            <li><i class="fas fa-check"></i> Your personal @mohammadi.com email</li>
+            <li><i class="fas fa-check"></i> Full access via Gmail</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="pricing-note">
+      <i class="fas fa-envelope"></i>
+      <p>Quick and easy access to your email through Gmail, Outlook, and other email services. No extra software needed — access your email anytime, anywhere.</p>
+    </div>
+  </div>
+
+  <div id="loadingModal" class="modal">
+    <div class="modal-content">
+      <div class="loading-spinner"></div>
+      <p>Please wait...</p>
+    </div>
+  </div>
+
+  <footer class="main-footer" id="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-info">
+          <h3>Get Started Today</h3>
+          <a href="mailto:support@mohammadi.com" class="footer-email">
+            <i class="fas fa-envelope"></i>
+            support@mohammadi.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
