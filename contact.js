@@ -22,7 +22,7 @@ function showMessage(text, isError = false) {
 async function handleSubmit(event) {
   event.preventDefault();
   
-  const email = emailInput.value.trim();
+  const email = emailInput.value.trim().toLowerCase();
   const urlParams = new URLSearchParams(window.location.search);
   const name = urlParams.get('name') || localStorage.getItem('userName');
 
