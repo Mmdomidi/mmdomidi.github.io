@@ -145,7 +145,7 @@ async function joinWaitingList(reservedEmail) {
     formData.append('reservedEmail', reservedEmail);
     formData.append('waitingEmail', waitingEmail);
 
-    const response = await fetch("https://n8nstudent.dotavvab.com/webhook-test/waitinglist", {
+    const response = await fetch("https://n8nstudent.dotavvab.com/webhook/waitinglist", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: formData.toString()
