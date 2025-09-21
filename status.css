@@ -151,6 +151,55 @@ body {
   color: var(--white);
   transform: translateY(-2px);
 }
+/* ✅ Waiting List Box - Final Version */
+.waiting-list-box {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  align-items: center;
+  margin: 20px; /* فاصله از همه اطراف */
+  margin-top: 1.5rem;
+  animation: slideUp 0.5s ease 0.3s both;
+  flex-wrap: wrap; /* برای موبایل اگر جا کم بود */
+}
+
+.waiting-list-box input {
+  width: 300px; /* طول مناسب دسکتاپ */
+  max-width: 90%; /* حداکثر 90٪ عرض در صفحات کوچک */
+  padding: 0.8rem 1rem;
+  border: 2px solid var(--primary-light);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.waiting-list-box input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(112, 102, 224, 0.15);
+}
+
+.waiting-list-box .cta-button {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  white-space: nowrap;
+  min-width: 120px; /* حداقل طول دکمه */
+}
+
+/* Responsive Design for Waiting List */
+@media (max-width: 768px) {
+  .waiting-list-box {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch; /* input و button پر طول موجود */
+  }
+
+  .waiting-list-box input,
+  .waiting-list-box .cta-button {
+    width: 100%;
+  }
+}
 
 /* Features Section */
 .features-section {
@@ -387,10 +436,13 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-/* Responsive Design */
+/* Responsive Design for Waiting List */
 @media (max-width: 768px) {
-  .container {
-    margin: 1rem auto;
+  .waiting-list-box {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch; /* input و button پر طول موجود */
+    margin-top: 1.5rem; /* فاصله از Back */
   }
 
   #statusMessage {
@@ -413,5 +465,6 @@ body {
   .cta-button,
   .secondary-button {
     width: 100%;
+    margin-bottom: 1rem; /* فاصله بین Back و Waiting List Box */
   }
-} 
+}

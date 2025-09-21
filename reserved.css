@@ -1,0 +1,165 @@
+/* =========================
+   Variables & Base Styles
+========================= */
+:root {
+  --primary-gradient: linear-gradient(135deg, #6e8efb, #7873f5);
+  --primary-color: #7066e0;
+  --primary-light: #8f85ff;
+  --primary-dark: #5a51c7;
+  --secondary-color: #2ecc71;
+  --secondary-light: #3ee384;
+  --accent-color: #ff6b6b;
+  --accent-light: #ff8787;
+  --success-color: #4CAF50;
+  --error-color: #f44336;
+  --text-dark: #2d3436;
+  --text-light: #636e72;
+  --background-light: #f5f6fa;
+  --white: #ffffff;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 8px rgba(0,0,0,0.12);
+  --shadow-lg: 0 8px 16px rgba(0,0,0,0.15);
+  --border-radius: 12px;
+  --transition-speed: 0.3s;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Vazirmatn', sans-serif;
+  background-color: var(--background-light);
+  color: var(--text-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* =========================
+   Card Container
+========================= */
+.card {
+  background: var(--white);
+  padding: 3rem 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  max-width: 450px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  animation: slideDown 0.6s ease;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: var(--primary-gradient);
+}
+
+/* =========================
+   Headings & Paragraphs
+========================= */
+.card h2 {
+  font-size: 2rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+  animation: slideUp 0.6s ease 0.1s both;
+}
+
+.card p {
+  color: var(--text-light);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  animation: slideUp 0.6s ease 0.2s both;
+}
+
+/* =========================
+   Info Box
+========================= */
+.info-box {
+  background-color: #f0f4ff;
+  padding: 1.5rem 1rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+  text-align: left;
+  animation: slideUp 0.6s ease 0.3s both;
+}
+
+.info-box p {
+  margin: 0.5rem 0;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+/* =========================
+   Buttons
+========================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 2rem;
+  background: var(--primary-gradient);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all var(--transition-speed) ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* =========================
+   Animations
+========================= */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================
+   Responsive Design
+========================= */
+@media (max-width: 768px) {
+  .card {
+    padding: 2rem 1.5rem;
+  }
+
+  .card h2 {
+    font-size: 1.7rem;
+  }
+
+  .card p {
+    font-size: 1rem;
+  }
+
+  .info-box {
+    padding: 1rem;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}

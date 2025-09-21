@@ -1,6 +1,7 @@
 const modal = document.getElementById('loadingModal');
 const statusMessage = document.getElementById('statusMessage');
 
+// نمایش مودال لودینگ
 function showLoadingModal() {
   modal.classList.add('show');
   document.body.style.overflow = 'hidden';
@@ -11,6 +12,7 @@ function hideLoadingModal() {
   document.body.style.overflow = '';
 }
 
+// نمایش پیام وضعیت ایمیل
 function showMessage(status, email) {
   let message = '';
   let className = '';
@@ -28,15 +30,21 @@ function showMessage(status, email) {
       `;
       className = 'success';
       break;
+
     case 'reserved':
       message = `
         <div class="status-icon error">✕</div>
         <h2>Email ${email}@mohammadi.com has already been reserved</h2>
-        <p>Please try a different name.</p>
-        <button onclick="goHome()" class="cta-button">Try Again</button>
+        <p>You can join the waiting list and we’ll notify you when it's available.</p>
+        <div class="waiting-list-box">
+          <input type="email" id="waitingEmail" placeholder="Enter your email" />
+          <button onclick="joinWaitingList('${email}')" class="cta-button">Join Waiting List</button>
+        </div>
+        <button onclick="goHome()" class="secondary-button">Back</button>
       `;
       className = 'error';
       break;
+
     case 'pending':
       message = `
         <div class="status-icon pending">⏳</div>
@@ -46,21 +54,17 @@ function showMessage(status, email) {
       `;
       className = 'pending';
       break;
-    // case 'reserved11':
-    //   message = `
-    //     <div class="status-icon success">✓</div>
-    //     <h2>Email ${email}@mohammadi.com has been successfully reserved</h2>
-    //     <p>Please complete your information.</p>
-    //     <a href="contact.html?name=${encodeURIComponent(email)}" class="cta-button">Complete Info</a>
-    //   `;
-    //   className = 'success';
-    //   break;
+
     default:
       message = `
         <div class="status-icon error">✕</div>
-        <h2>Email ${email}@mohammdi.com has already been reserved</h2>
-        <p>Please try a different name.</p>
-        <button onclick="goHome()" class="cta-button">Try Again</button>
+        <h2>Email ${email || "This address"}@mohammadi.com is not available</h2>
+        <p>You can join the waiting list and we’ll notify you when it's available.</p>
+        <div class="waiting-list-box">
+          <input type="email" id="waitingEmail" placeholder="Enter your email" />
+          <button onclick="joinWaitingList('${email}')" class="cta-button">Join Waiting List</button>
+        </div>
+        <button onclick="goHome()" class="secondary-button">Back</button>
       `;
       className = 'error';
   }
@@ -69,15 +73,14 @@ function showMessage(status, email) {
   statusMessage.className = className;
 }
 
-// Get email and status from URL parameters
+// دریافت ایمیل و وضعیت از URL
 const urlParams = new URLSearchParams(window.location.search);
 const email = urlParams.get('email');
 const status = urlParams.get('status');
 
-// Show loading modal immediately
+// نمایش لودینگ اولیه
 showLoadingModal();
 
-// Add minimum delay for better UX
 setTimeout(() => {
   hideLoadingModal();
   if (email && status) {
@@ -87,10 +90,12 @@ setTimeout(() => {
   }
 }, 800);
 
+// برگشت به خانه
 function goHome() {
   window.location.href = 'index.html';
 }
 
+// رزرو ایمیل
 async function reserveEmail(email) {
   if (!email) {
     alert("Invalid email.");
@@ -98,37 +103,65 @@ async function reserveEmail(email) {
   }
 
   showLoadingModal();
-
   try {
     const formData = new URLSearchParams();
     formData.append('name', email);
 
     const response = await fetch("https://n8nstudent.dotavvab.com/webhook/reserve", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: formData.toString()
     });
 
-    if (!response.ok) {
-      throw new Error("Server connection error");
-    }
+    if (!response.ok) throw new Error("Server connection error");
 
     const data = await response.json();
-
     hideLoadingModal();
 
     if (data.status === "reserved") {
-      console.log('Reservation successful:', data);
-      window.location.href = `contact.html?name=${encodeURIComponent(email)}`;
+      // رفتن به صفحه نمایش رزرو
+      window.location.href = `reserved.html?reservedEmail=${encodeURIComponent(email)}&waitinglist=`;
     } else {
-      console.error('Reservation failed:', data);
       showMessage('error', email);
     }
   } catch (error) {
     console.error('Error during reservation:', error);
     hideLoadingModal();
     alert("Error reserving email. Please try again.");
+  }
+}
+
+// اضافه کردن به Waiting List و رفتن به صفحه reserved.html
+async function joinWaitingList(reservedEmail) {
+  const waitingEmail = document.getElementById('waitingEmail').value.trim();
+  if (!waitingEmail) {
+    alert("Please enter a valid email.");
+    return;
+  }
+
+  showLoadingModal();
+  try {
+    const formData = new URLSearchParams();
+    formData.append('reservedEmail', reservedEmail);
+    formData.append('waitingEmail', waitingEmail);
+
+    const response = await fetch("https://n8nstudent.dotavvab.com/webhook-test/waitinglist", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: formData.toString()
+    });
+
+    hideLoadingModal();
+
+    if (response.ok) {
+      // بعد از ذخیره شدن، رفتن به صفحه reserved.html با ایمیل‌ها
+      window.location.href = `reserved.html?reservedEmail=${encodeURIComponent(reservedEmail)}&waitinglist=${encodeURIComponent(waitingEmail)}`;
+    } else {
+      alert("Error joining waiting list. Please try again.");
+    }
+  } catch (error) {
+    console.error("Error joining waiting list:", error);
+    hideLoadingModal();
+    alert("Error joining waiting list. Please try again.");
   }
 }
